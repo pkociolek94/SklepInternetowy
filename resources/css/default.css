@@ -15,11 +15,6 @@ h1 {
     padding: 0px;
     color: #D20005;
 }
-h2{
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    border-bottom: 1px solid #AFAFAF;
-    color: #036fab;
-}
 
 a:link, a:visited {
   color: #045491;
