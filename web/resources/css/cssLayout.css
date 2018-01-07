@@ -35,6 +35,15 @@
     border-top: 2px solid #AFAFAF;
     border-bottom: 2px solid #AFAFAF;
 }
+#left3 {
+    float: left;
+    background-color:  aquamarine;
+    padding: 5px;
+    width: 15%;
+    border-right: 2px solid #AFAFAF;
+    border-top: 2px solid #AFAFAF;
+    border-bottom: 2px solid #AFAFAF;
+}
 
 #right {
     float: right;
