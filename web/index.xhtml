@@ -32,20 +32,20 @@
                 </p:button>
             </h:form>
             <h:form>
-                <h:outputText value="Login: " rendered="false"/>
-                <p:inputText required="true" rendered="false"/>
+                <h:outputText value="aaa" rendered="false"/>
+                <p:inputText required="true" rendered="true" value="#{userBean.rezultat}"/>
                 <h:outputText value="Hasło: " rendered="false"/>
                 <p:inputText required="true" rendered="false"/>
-                <p:button value="Rejestracja" rendered="false">
-                </p:button>
+                <h:commandButton value="Rejestracja" action="#{userBean.testujemyBaze}"/>
+               
             </h:form>
         </div>
         <div id="left1">
             <h1>Kategorie</h1>
             <h:form>
                 <p:outputLabel for="basic6" value="Wybierz produkt: " />
-                <p:selectOneListbox id="basic6" value="#{selectOneView.option}">
-                    <f:selectItem itemLabel="Option 1" itemValue="1" />
+                <p:selectOneListbox id="basic6">
+                    <f:selectItem itemLabel="Option1" itemValue="1" />
                     <f:selectItem itemLabel="Option 2" itemValue="2" />
                     <f:selectItem itemLabel="Option 3" itemValue="3" />
                     <f:selectItem itemLabel="Option 3" itemValue="3" />
@@ -58,7 +58,7 @@
 
         </div>
         <div id="right">
-            <p:dataTable var="car">
+            <p:dataTable var="PRODUKT">
                 <p:column headerText="Nazwa">
                     <h:outputText value="Meble kuchenne" />
                 </p:column>

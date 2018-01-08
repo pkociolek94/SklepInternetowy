@@ -7,6 +7,9 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,6 +26,8 @@ import javax.validation.constraints.Size;
  *
  * @author Pawel
  */
+@javax.faces.bean.ManagedBean
+@SessionScoped
 @Entity
 @Table(name = "KATEGORIA")
 @NamedQueries({
@@ -34,7 +39,6 @@ public class Kategoria implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "NAZWA")
@@ -77,6 +81,7 @@ public class Kategoria implements Serializable {
     public void setListaPrzedmiotowCollection(Collection<ListaPrzedmiotow> listaPrzedmiotowCollection) {
         this.listaPrzedmiotowCollection = listaPrzedmiotowCollection;
     }
+   
 
     @Override
     public int hashCode() {

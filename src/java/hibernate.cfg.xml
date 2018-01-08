@@ -7,11 +7,5 @@
     <property name="hibernate.connection.url">jdbc:derby://localhost:1527/Shop</property>
     <property name="hibernate.connection.username">Shop</property>
     <property name="hibernate.connection.password">Shop</property>
-    <mapping class="entities.Kategoria"/>
-    <mapping class="entities.Konto"/>
-    <mapping class="entities.ListaPrzedmiotow"/>
-    <mapping class="entities.ListaZakupow"/>
-    <mapping class="entities.Produkt"/>
-    <mapping class="entities.Rola"/>
   </session-factory>
 </hibernate-configuration>
