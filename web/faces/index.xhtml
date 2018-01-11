@@ -18,26 +18,18 @@
 
 
         <div id="top">
-            <p:button value="Zaloguj się" icon="ui-icon-star">
-            </p:button>
-            <p:commandLink id="ajax" actionListener="#{buttonView.buttonAction}" >
-                <h:outputText value="Rejestracja" />
-            </p:commandLink>
+
             <h:form>
-                <h:outputText value="Login: " rendered="false"/>
-                <p:inputText required="true" rendered="false" />
-                <h:outputText value="Hasło: " rendered="false"/>
-                <p:inputText required="true" rendered="false"/>
-                <p:button value="Zaloguj" icon="ui-icon-save" rendered="false">
-                </p:button>
-            </h:form>
-            <h:form>
-                <h:outputText value="aaa" rendered="false"/>
-                <p:inputText required="true" rendered="true" value="#{userBean.rezultat}"/>
-                <h:outputText value="Hasło: " rendered="false"/>
-                <p:inputText required="true" rendered="false"/>
-                <h:commandButton value="Rejestracja" action="#{userBean.testujemyBaze}"/>
-               
+                <h:outputText value="Login:" rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <p:inputText required="true" value="#{logowanieBean.login}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <h:outputText value="Hasło: " rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <p:inputText required="true" value="#{logowanieBean.haslo}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <h:commandButton value="Zaloguj" action="#{logowanieBean.logowanie}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <p:commandLink id="link" actionListener="#{buttonView.buttonAction}" >
+                    <h:outputText value="Rejestracja" rendered="#{logowanieBean.wyswietl_logowanie}" />
+                </p:commandLink>
+                <h:outputText value="#{logowanieBean.wiadomosc}"/>
+                <h:commandButton value="Wyloguj" action="#{logowanieBean.wyloguj}" style="margin-left: 10px;" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
             </h:form>
         </div>
         <div id="left1">
@@ -58,24 +50,24 @@
 
         </div>
         <div id="right">
-            <p:dataTable var="PRODUKT">
+            <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}">
                 <p:column headerText="Nazwa">
-                    <h:outputText value="Meble kuchenne" />
+                    <h:outputText value="#{produkt.nazwa}" />
                 </p:column>
 
                 <p:column headerText="Cena">
-                    <h:outputText value="1500.00zl" />
+                    <h:outputText value="#{produkt.cena}" />
                 </p:column>
 
                 <p:column headerText="Zdjęcie">
-                    <h:outputText value="/resources/img.png" />
+                    <h:outputText value="#{produkt.zdjecie}" />
                 </p:column>
 
                 <p:column headerText="Szczegóły">
-                    <h:outputText value="Meble bardzo wytrzymaly, plyta mdf, kolor;niebieski" />
+                    <h:outputText value="#{produkt.szczegoly}" />
                 </p:column>
                 <p:column headerText="Sztuk">
-                    <h:outputText value="51" />
+                    <h:outputText value="#{produkt.sztuk}" />
                 </p:column>
             </p:dataTable>
         </div>
