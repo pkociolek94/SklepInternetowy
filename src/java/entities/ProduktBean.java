@@ -1,4 +1,4 @@
-package org.primefaces.showcase.view.data.datatable;
+package entities;
  
 import entities.Produkt;
 import entities.ProduktModel;
