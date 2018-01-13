@@ -11,19 +11,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 /**
  *
  * @author Student
  */
-@Named(value = "kategoriaBean")
-@Dependent
+@ManagedBean(name = "kategoriaBean")
+@ViewScoped
 public class kategoriaBean implements Serializable
 {
+    
     private List<KategoriaModel> kategoriaModels;
 
     public List<KategoriaModel> getKategoriaModels() {
@@ -41,7 +44,8 @@ public class kategoriaBean implements Serializable
     public void setKategoriaModel(KategoriaModel kategoriaModel) {
         this.kategoriaModel = kategoriaModel;
     }
-    @Inject
+
+    @ManagedProperty("#{kategoriaModel}")
     private KategoriaModel kategoriaModel;
 
     /**

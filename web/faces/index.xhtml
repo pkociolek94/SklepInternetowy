@@ -9,8 +9,8 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="css/default.css"/>
-        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
         <title>Facelets Template</title>
     </h:head>
 
@@ -54,14 +54,16 @@
                 </p:column>
 
                 <p:column headerText="Zdjęcie">
-                    <h:outputText value="#{produkt.zdjecie}" />
+                    <img src ="#{produkt.zdjecie}.jpg"  width="300"  height="150" align="middle"/>
                 </p:column>
-
                 <p:column headerText="Szczegóły">
                     <h:outputText value="#{produkt.szczegoly}" />
                 </p:column>
                 <p:column headerText="Sztuk">
                     <h:outputText value="#{produkt.sztuk}" />
+                </p:column>
+                <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}">
+                    <h:button value="+" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
                 </p:column>
             </p:dataTable>
         </div>

@@ -54,7 +54,7 @@ public class logowanieBean {
     public void setWiadomosc(String wiadomosc) {
         this.wiadomosc = wiadomosc;
     }
-
+    
     private String login;
     private String haslo;
     private String rola;
