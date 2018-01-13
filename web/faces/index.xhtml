@@ -20,7 +20,7 @@
         <div id="top">
 
             <h:form>
-                <h:outputText value="Login:" rendered="#{logowanieBean.wyswietl_logowanie}"/>
+                <h:outputText value="Login:" rendered="#{logowanieBean.wyswietl_logowanie}" />
                 <p:inputText required="true" value="#{logowanieBean.login}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
                 <h:outputText value="Hasło: " rendered="#{logowanieBean.wyswietl_logowanie}"/>
                 <p:inputText required="true" value="#{logowanieBean.haslo}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
@@ -28,23 +28,40 @@
                 <p:commandLink id="link" actionListener="#{buttonView.buttonAction}" >
                     <h:outputText value="Rejestracja" rendered="#{logowanieBean.wyswietl_logowanie}" />
                 </p:commandLink>
-                <h:outputText value="#{logowanieBean.wiadomosc}"/>
+                <h:outputText value="#{logowanieBean.wiadomosc}" style="margin-left: 20px"/>
                 <h:commandButton value="Wyloguj" action="#{logowanieBean.wyloguj}" style="margin-left: 10px;" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
             </h:form>
         </div>
+        
         <div id="left1">
             <h1>Kategorie</h1>
             <h:form>
                 <p:outputLabel for="basic6" />
-                <p:selectOneListbox id="basic6"  >
+                <p:selectOneListbox id="basic6" scrollHeight="100">
                     <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat"/>
                 </p:selectOneListbox>
                 <p:button value="Pokaz"></p:button>
             </h:form>
-
         </div>
+        <div id="zakupy" >
+                <h1>
+                    #{logowanieBean.wiadomosc_kosz}
+                </h1>
+            <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
+                
+                <p:dataTable var="produkt" value="test" scrollHeight="100">
+                    <p:column headerText="Nazwa">
+                        <h:outputText value="Przedmiot" />
+                    </p:column>
+                    <p:column headerText="Cena">
+                        <h:outputText value="Cena" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+
         <div id="right">
-            <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}">
+            <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}" scrollable="true" scrollHeight="800">
                 <p:column headerText="Nazwa">
                     <h:outputText value="#{produkt.nazwa}" />
                 </p:column>
@@ -54,7 +71,8 @@
                 </p:column>
 
                 <p:column headerText="Zdjęcie">
-                    <img src ="#{produkt.zdjecie}.jpg"  width="300"  height="150" align="middle"/>
+                    <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="middle"/>
+
                 </p:column>
                 <p:column headerText="Szczegóły">
                     <h:outputText value="#{produkt.szczegoly}" />

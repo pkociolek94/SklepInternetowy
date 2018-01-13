@@ -59,6 +59,23 @@ public class logowanieBean {
     private String haslo;
     private String rola;
     private String wiadomosc;
+    private String wiadomosc_kosz = "Zaloguj się aby uzyskać dostęp do koszyka";
+
+    public String getWiadomosc_kosz() {
+        return wiadomosc_kosz;
+    }
+
+    public void setWiadomosc_kosz(String wiadomosc_kosz) {
+        this.wiadomosc_kosz = wiadomosc_kosz;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
     boolean czy_zalogowany = false;
     private boolean wyswietl_logowanie = true;
     String test = "";
@@ -103,12 +120,14 @@ public class logowanieBean {
                 if (czy_zalogowany == false) {
                     if (login.equalsIgnoreCase(rs.getString(2)) && haslo.equalsIgnoreCase(rs.getString(3))) {
                         wiadomosc = "Udało ci się zalogować, " + login;
+                        wiadomosc_kosz = login+ ", Twoja lista zakupów:";
                         czy_zalogowany = true;
                         wyswietl_logowanie = false;
                         return "index";
 
                     } else {
                         wiadomosc = "Nieprawidłowy login lub hasło";
+                        
                         return "index";
                     }
                 }
@@ -125,6 +144,7 @@ public class logowanieBean {
         czy_zalogowany = false;
         wyswietl_logowanie = true;
         wiadomosc = "";
+        wiadomosc_kosz = "Zaloguj się aby uzyskać dostęp do koszyka";
 
         return "index";
     }

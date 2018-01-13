@@ -37,10 +37,18 @@
     background-color: #ece3a5;
     padding: 5px;
     width: 15%;
-    border-right: 2px solid #AFAFAF;
-    border-top: 2px solid #AFAFAF;
-    border-bottom: 2px solid #AFAFAF;
-    border-left: 2px solid #AFAFAF;
+    border: 4px solid #AFAFAF;
+    height: 20%;
+
+    
+}
+#zakupy{
+    float:left;
+    padding: 5px;
+    border: 4px solid #AFAFAF;
+    background-color: chartreuse;
+    width: 15%;
+    height: 60%;
     
 }
 #left2 {
