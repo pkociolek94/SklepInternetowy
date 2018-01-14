@@ -8,9 +8,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
+        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
+        
         <title>Facelets Template</title>
     </h:head>
 
@@ -40,50 +43,65 @@
                 <p:selectOneListbox id="basic6" scrollHeight="100">
                     <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat"/>
                 </p:selectOneListbox>
-                <p:button value="Pokaz"></p:button>
+                
+
             </h:form>
         </div>
-        <div id="zakupy" >
+        <div id="zakupy" rendered="#{!logowanieBean.wyswietl_logowanie}">
                 <h1>
                     #{logowanieBean.wiadomosc_kosz}
                 </h1>
             <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
                 
-                <p:dataTable var="produkt" value="test" scrollHeight="100">
+                <p:dataTable var="kosz" value="#{dodawanieBean.dodawanieModels}"  scrollable="true" scrollHeight="150" emptyMessage="Pusta lista..." >
                     <p:column headerText="Nazwa">
-                        <h:outputText value="Przedmiot" />
+                        <h:outputText value="#{kosz.nazwa}" />
                     </p:column>
                     <p:column headerText="Cena">
-                        <h:outputText value="Cena" />
+                        <h:outputText value="#{kosz.cena}" />
+                    </p:column>
+                    <p:column headerText="Data" >
+                        <h:outputText value="#{kosz.data}" />
+                    </p:column>
+                    <p:column headerText="Potwierdz" width="25%">
+                        <p:commandButton value="Potwierdzam" icon="ui-icon-check" ></p:commandButton>
+                        
+                    </p:column>
+                    <p:column headerText="Anuluj">
+                        <p:commandButton value="Anuluje" icon="ui-icon-close" ></p:commandButton>
                     </p:column>
                 </p:dataTable>
             </h:form>
         </div>
 
         <div id="right">
+            <h:form>
             <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}" scrollable="true" scrollHeight="800">
-                <p:column headerText="Nazwa">
-                    <h:outputText value="#{produkt.nazwa}" />
+                <p:column headerText="Nazwa" width="15%">
+                    <h:outputText value="#{produkt.nazwa}"  />
                 </p:column>
 
-                <p:column headerText="Cena">
+                <p:column headerText="Cena" width="5%">
                     <h:outputText value="#{produkt.cena}" />
                 </p:column>
 
-                <p:column headerText="Zdjęcie">
-                    <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="middle"/>
+                <p:column headerText="Zdjęcie" width="20%">
+                    <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="top" style=""/>
 
                 </p:column>
                 <p:column headerText="Szczegóły">
                     <h:outputText value="#{produkt.szczegoly}" />
                 </p:column>
-                <p:column headerText="Sztuk">
+                <p:column headerText="Sztuk" width="4%">
                     <h:outputText value="#{produkt.sztuk}" />
                 </p:column>
-                <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}">
-                    <h:button value="+" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
+                <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}" width="4%">
+                    <h:commandButton value="+" action="#{dodawanieBean.init(produkt.nazwa)}"  rendered="#{!logowanieBean.wyswietl_logowanie}">
+                       
+                    </h:commandButton>
                 </p:column>
             </p:dataTable>
+            </h:form>
         </div>
 
     </h:body>

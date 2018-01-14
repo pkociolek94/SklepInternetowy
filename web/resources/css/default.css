@@ -30,6 +30,7 @@ link{
     display: block;
     float:right
 }
+
 a:link:hover, a:visited:hover  {
   color: #045491;
   font-weight : bold;

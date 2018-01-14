@@ -145,6 +145,7 @@ public class logowanieBean {
         wyswietl_logowanie = true;
         wiadomosc = "";
         wiadomosc_kosz = "Zaloguj się aby uzyskać dostęp do koszyka";
+        
 
         return "index";
     }

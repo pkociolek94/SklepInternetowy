@@ -22,19 +22,17 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Pawel
  */
-@ManagedBean(name = "produktModel")
-@ApplicationScoped
-public class ProduktModel {
-    private int cena;
+@ManagedBean(name="dodawanieModel")
+@SessionScoped
+public class dodawanieModel {
     private String nazwa;
-    private int id;
 
-    public int getId() {
-        return id;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
     public int getCena() {
@@ -45,63 +43,36 @@ public class ProduktModel {
         this.cena = cena;
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public String getData() {
+        return data;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public void setData(String data) {
+        this.data = data;
+    }
+    private int cena;
+    private String data;
+    private ArrayList<dodawanieModel> list = new ArrayList<>();
+
+    public ArrayList<dodawanieModel> getList() {
+        return list;
     }
 
-    public String getZdjecie() {
-        return zdjecie;
+    public void setList(ArrayList<dodawanieModel> list) {
+        this.list = list;
     }
-
-    public void setZdjecie(String zdjecie) {
-        this.zdjecie = zdjecie;
-    }
-
-    public String getSzczegoly() {
-        return szczegoly;
-    }
-
-    public void setSzczegoly(String szczegoly) {
-        this.szczegoly = szczegoly;
-    }
-
-    public int getSztuk() {
-        return sztuk;
-    }
-
-    public void setSztuk(int sztuk) {
-        this.sztuk = sztuk;
-    }
-    private String zdjecie;
-    private String szczegoly;
-    private int sztuk;
-
-    public ProduktModel() {
-    }
-
     /**
-     *
-     * @param id
-     * @param nazwa
-     * @param cena
-     * @param zdjecie
-     * @param szczegoly
-     * @param sztuk
+     * Creates a new instance of dodawanieModel
      */
-    public ProduktModel(int id, String nazwa, int cena, String zdjecie, String szczegoly, int sztuk) {
-        this.nazwa = nazwa;
-        this.id = id;
-        this.cena = cena;
-        this.zdjecie = zdjecie;
-        this.szczegoly = szczegoly;
-        this.sztuk = sztuk;
+    public dodawanieModel() {
     }
-public List<ProduktModel> createProdukt1() throws SQLException {
-        ArrayList<ProduktModel> list = new ArrayList<>();
+
+    public dodawanieModel(String nazwa, int cena, String data) {
+        this.nazwa = nazwa;
+        this.cena = cena;
+        this.data = data;
+    }
+    public List<dodawanieModel> dodaj(String ss) throws SQLException {
         String sterownik = "org.apache.derby.jdbc.ClientDriver";
         String url = "jdbc:derby://localhost:1527/Shop";
         
@@ -112,22 +83,23 @@ public List<ProduktModel> createProdukt1() throws SQLException {
         }
         Exception blad = null;
         try (Connection conn = DriverManager.getConnection(url, "Shop", "Shop")) {
-            java.sql.Statement stm = conn.createStatement(); //uwaga na import - ma być z pakietu java.sql
+            java.sql.Statement stm = conn.createStatement();
+            //uwaga na import - ma być z pakietu java.sql
             String pass = "select id, nazwa,cena,zdjecie,szczegoly,sztuk from produkt";
             ResultSet rs = stm.executeQuery(pass);
+            String p = ss;
             while (rs.next()) {
-                list.add(new ProduktModel(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
-            }
+                if(p.equals(rs.getString(2))){
+                list.add(new dodawanieModel( rs.getString(2), rs.getInt(3), rs.getString(4)));}
+            }conn.close();
             
         } catch (SQLDataException e) {
         }
-
+         
         
         
         return list;
     }
-    
-    
     
     
 }
