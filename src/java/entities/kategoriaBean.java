@@ -65,4 +65,8 @@ public class kategoriaBean implements Serializable
     public kategoriaBean() {
     }
     
+    public String test(){
+        return "logowanie.xhtml";
+    }
+    
 }

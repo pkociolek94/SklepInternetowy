@@ -8,16 +8,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        
+
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        
+
         <title>Facelets Template</title>
     </h:head>
 
-    <h:body>
+    <h:body style="background-color: #dddddd">
 
 
         <div id="top">
@@ -35,40 +35,45 @@
                 <h:commandButton value="Wyloguj" action="#{logowanieBean.wyloguj}" style="margin-left: 10px;" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
             </h:form>
         </div>
-        
+
         <div id="left1">
             <h1>Kategorie</h1>
             <h:form>
                 <p:outputLabel for="basic6" />
-                <p:selectOneListbox id="basic6" scrollHeight="100">
+                <p:selectOneListbox id="basic6" scrollHeight="200" >
                     <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat"/>
                 </p:selectOneListbox>
-                
+                <h:commandButton value="Pokaż"  style="margin-left: 10px; background-color: lightgray"/>
+
 
             </h:form>
         </div>
         <div id="zakupy" rendered="#{!logowanieBean.wyswietl_logowanie}">
-                <h1>
-                    #{logowanieBean.wiadomosc_kosz}
-                </h1>
             <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
-                
+            <h1>
+                #{logowanieBean.wiadomosc_kosz}
+            </h1>
+            </h:form>
+        
+            
+            <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
+
                 <p:dataTable var="kosz" value="#{dodawanieBean.dodawanieModels}"  scrollable="true" scrollHeight="150" emptyMessage="Pusta lista..." >
-                    <p:column headerText="Nazwa">
+                    <p:column headerText="Nazwa" width="1%" >
                         <h:outputText value="#{kosz.nazwa}" />
                     </p:column>
-                    <p:column headerText="Cena">
+                    <p:column headerText="Cena" width="5%">
                         <h:outputText value="#{kosz.cena}" />
                     </p:column>
-                    <p:column headerText="Data" >
+                    <p:column headerText="Data" width="5%">
                         <h:outputText value="#{kosz.data}" />
                     </p:column>
-                    <p:column headerText="Potwierdz" width="25%">
-                        <p:commandButton value="Potwierdzam" icon="ui-icon-check" ></p:commandButton>
-                        
+                    <p:column headerText="Potwierdz" width="5%">
+                        <p:commandButton icon="ui-icon-check" ></p:commandButton>
+
                     </p:column>
-                    <p:column headerText="Anuluj">
-                        <p:commandButton value="Anuluje" icon="ui-icon-close" ></p:commandButton>
+                    <p:column headerText="Anuluj" width="5%">
+                        <p:commandButton icon="ui-icon-close" ></p:commandButton>
                     </p:column>
                 </p:dataTable>
             </h:form>
@@ -76,31 +81,29 @@
 
         <div id="right">
             <h:form>
-            <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}" scrollable="true" scrollHeight="800">
-                <p:column headerText="Nazwa" width="15%">
-                    <h:outputText value="#{produkt.nazwa}"  />
-                </p:column>
+                <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}" scrollable="true" scrollHeight="800">
+                    <p:column headerText="Nazwa" width="3%" filterBy="#{produkt.nazwa}" >
+                        <h:outputText value="#{produkt.nazwa}"  />
+                    </p:column>
 
-                <p:column headerText="Cena" width="5%">
-                    <h:outputText value="#{produkt.cena}" />
-                </p:column>
+                    <p:column headerText="Cena" width="5%" >
+                        <h:outputText value="#{produkt.cena}" />
+                    </p:column>
 
-                <p:column headerText="Zdjęcie" width="20%">
-                    <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="top" style=""/>
+                    <p:column headerText="Zdjęcie" width="20%">
+                        <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="top" style=""/>
 
-                </p:column>
-                <p:column headerText="Szczegóły">
-                    <h:outputText value="#{produkt.szczegoly}" />
-                </p:column>
-                <p:column headerText="Sztuk" width="4%">
-                    <h:outputText value="#{produkt.sztuk}" />
-                </p:column>
-                <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}" width="4%">
-                    <h:commandButton value="+" action="#{dodawanieBean.init(produkt.nazwa)}"  rendered="#{!logowanieBean.wyswietl_logowanie}">
-                       
-                    </h:commandButton>
-                </p:column>
-            </p:dataTable>
+                    </p:column>
+                    <p:column headerText="Szczegóły" width="15%">
+                        <h:outputText value="#{produkt.szczegoly}" />
+                    </p:column>
+
+                    <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}" width="4%">
+                        <h:commandButton value="+" action="#{dodawanieBean.init(produkt.nazwa)}"  rendered="#{!logowanieBean.wyswietl_logowanie}">
+
+                        </h:commandButton>
+                    </p:column>
+                </p:dataTable>
             </h:form>
         </div>
 
