@@ -10,7 +10,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -147,7 +150,7 @@ public List<ProduktModel> przezKategorie(String nazwa2) throws SQLException {
         String t1 = "ghgh";
         String sterownik = "org.apache.derby.jdbc.ClientDriver";
         String url = "jdbc:derby://localhost:1527/Shop";
-        
+
         try {
             Class.forName(sterownik);
         } catch (ClassNotFoundException ex) {

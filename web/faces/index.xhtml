@@ -6,22 +6,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <h:head>
-
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-
-        <title>Facelets Template</title>
+        <title>Sklep Internetowy</title>
     </h:head>
-
     <h:body style="background-color: #dddddd">
-
-
         <div id="top">
-
             <h:form>
                 <h:outputText value="Login:" rendered="#{logowanieBean.wyswietl_logowanie}" />
                 <p:inputText required="true" value="#{logowanieBean.login}" rendered="#{logowanieBean.wyswietl_logowanie}"/>
@@ -35,7 +27,6 @@
                 <h:commandButton value="Wyloguj" action="#{logowanieBean.wyloguj}" style="margin-left: 10px;" rendered="#{!logowanieBean.wyswietl_logowanie}"/>
             </h:form>
         </div>
-
         <div id="left1">
             <h1>Kategorie</h1>
             <h:form>
@@ -44,20 +35,15 @@
                     <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat" itemValue="#{kat.nazwa}"/>
                 </p:selectOneListbox>
                 <h:commandButton value="Pokaż" action ="#{dtProduktBean.pokazKategorie(produktModel.kat_nazwa)}" style="margin-left: 10px; background-color: lightgray"/>
-
-
             </h:form>
         </div>
         <div id="zakupy" rendered="#{!logowanieBean.wyswietl_logowanie}">
             <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
-            <h1>
-                #{logowanieBean.wiadomosc_kosz}
-            </h1>
+                <h2>
+                    #{logowanieBean.wiadomosc_kosz}
+                </h2>
             </h:form>
-        
-            
             <h:form rendered="#{!logowanieBean.wyswietl_logowanie}">
-
                 <p:dataTable var="kosz" value="#{dodawanieBean.dodawanieModels}"  scrollable="true" scrollHeight="150" emptyMessage="Pusta lista..." >
                     <p:column headerText="Nazwa" width="1%" >
                         <h:outputText value="#{kosz.nazwa}" />
@@ -70,7 +56,6 @@
                     </p:column>
                     <p:column headerText="Potwierdz" width="5%">
                         <p:commandButton icon="ui-icon-check" ></p:commandButton>
-
                     </p:column>
                     <p:column headerText="Anuluj" width="5%">
                         <p:commandButton icon="ui-icon-close" ></p:commandButton>
@@ -78,35 +63,27 @@
                 </p:dataTable>
             </h:form>
         </div>
-
         <div id="right">
             <h:form>
                 <p:dataTable var="produkt" value="#{dtProduktBean.produktModels}" scrollable="true" scrollHeight="800">
-                    <p:column headerText="Nazwa" width="3%" filterBy="#{produkt.nazwa}" >
+                    <p:column headerText="Nazwa" width="3%" >
                         <h:outputText value="#{produkt.nazwa}"  />
                     </p:column>
-
                     <p:column headerText="Cena" width="5%" >
                         <h:outputText value="#{produkt.cena}" />
                     </p:column>
-
                     <p:column headerText="Zdjęcie" width="20%">
                         <img src ="#{produkt.zdjecie}"  width="280"  height="150" align="top" style=""/>
-
                     </p:column>
                     <p:column headerText="Szczegóły" width="15%">
                         <h:outputText value="#{produkt.szczegoly}" />
                     </p:column>
-
                     <p:column headerText="Dodaj do koszyka" rendered="#{!logowanieBean.wyswietl_logowanie}" width="4%">
                         <h:commandButton value="+" action="#{dodawanieBean.init(produkt.nazwa)}"  rendered="#{!logowanieBean.wyswietl_logowanie}">
-
                         </h:commandButton>
                     </p:column>
                 </p:dataTable>
             </h:form>
         </div>
-
     </h:body>
-
 </html>

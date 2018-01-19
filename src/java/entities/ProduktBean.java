@@ -1,5 +1,5 @@
 package entities;
- 
+
 import entities.Produkt;
 import entities.ProduktModel;
 import java.io.Serializable;
@@ -11,13 +11,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
- 
-@ManagedBean(name="dtProduktBean")
+
+@ManagedBean(name = "dtProduktBean")
 @ViewScoped
 public class ProduktBean implements Serializable {
-     
+
     private List<ProduktModel> produktModels;
-     
+
     @ManagedProperty("#{produktModel}")
     private ProduktModel produktModel;
 
@@ -32,7 +32,7 @@ public class ProduktBean implements Serializable {
     public void setProduktModel(ProduktModel produktModel) {
         this.produktModel = produktModel;
     }
- 
+
     @PostConstruct
     public void init() {
         try {
@@ -41,17 +41,18 @@ public class ProduktBean implements Serializable {
             Logger.getLogger(ProduktBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void pokazKategorie(String nazwa1) throws SQLException{
+
+    public void pokazKategorie(String nazwa1) throws SQLException {
         String klucz = nazwa1;
         produktModels = null;
         produktModels = produktModel.przezKategorie(klucz);
-        
+
     }
-     
+
     public List<ProduktModel> getProduktModels() {
         return produktModels;
     }
- 
+
     public void setService(ProduktModel produktModel) {
         this.produktModel = produktModel;
     }
