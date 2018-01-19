@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -145,7 +146,7 @@ public class logowanieBean {
         wyswietl_logowanie = true;
         wiadomosc = "";
         wiadomosc_kosz = "Zaloguj się aby uzyskać dostęp do koszyka";
-        
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
         return "index";
     }

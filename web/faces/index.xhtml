@@ -40,10 +40,10 @@
             <h1>Kategorie</h1>
             <h:form>
                 <p:outputLabel for="basic6" />
-                <p:selectOneListbox id="basic6" scrollHeight="200" >
-                    <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat"/>
+                <p:selectOneListbox id="basic6" scrollHeight="200" value ="#{produktModel.kat_nazwa}">
+                    <f:selectItems itemLabel="#{kat.nazwa}" value="#{kategoriaBean.kategoriaModels}" var="kat" itemValue="#{kat.nazwa}"/>
                 </p:selectOneListbox>
-                <h:commandButton value="Pokaż"  style="margin-left: 10px; background-color: lightgray"/>
+                <h:commandButton value="Pokaż" action ="#{dtProduktBean.pokazKategorie(produktModel.kat_nazwa)}" style="margin-left: 10px; background-color: lightgray"/>
 
 
             </h:form>

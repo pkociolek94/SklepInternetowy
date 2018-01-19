@@ -28,7 +28,7 @@ public class kategoriaBean implements Serializable
 {
     
     private List<KategoriaModel> kategoriaModels;
-
+    
     public List<KategoriaModel> getKategoriaModels() {
         return kategoriaModels;
     }

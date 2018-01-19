@@ -41,6 +41,12 @@ public class ProduktBean implements Serializable {
             Logger.getLogger(ProduktBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void pokazKategorie(String nazwa1) throws SQLException{
+        String klucz = nazwa1;
+        produktModels = null;
+        produktModels = produktModel.przezKategorie(klucz);
+        
+    }
      
     public List<ProduktModel> getProduktModels() {
         return produktModels;
