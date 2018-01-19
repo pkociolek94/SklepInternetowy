@@ -10,7 +10,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,6 +78,8 @@ public class dodawanieModel {
     public List<dodawanieModel> dodaj(String ss) throws SQLException {
         String sterownik = "org.apache.derby.jdbc.ClientDriver";
         String url = "jdbc:derby://localhost:1527/Shop";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
         
         try {
             Class.forName(sterownik);
@@ -90,7 +95,7 @@ public class dodawanieModel {
             String p = ss;
             while (rs.next()) {
                 if(p.equals(rs.getString(2))){
-                list.add(new dodawanieModel( rs.getString(2), rs.getInt(3), rs.getString(4)));}
+                list.add(new dodawanieModel( rs.getString(2), rs.getInt(3), dateFormat.format(date)));}
             }conn.close();
             
         } catch (SQLDataException e) {
