@@ -61,4 +61,6 @@ public class dodawanieBean implements Serializable{
             Logger.getLogger(ProduktBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        
+        
 }

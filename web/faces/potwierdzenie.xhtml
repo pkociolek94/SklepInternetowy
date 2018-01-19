@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="topsubmit">
+            <ui:insert name="top">OKNO POTWIERDZENIA ZAKUPU</ui:insert>
+        </div>
+        <div>
+            <div id="content" class="right_content">
+                <ui:insert name="content" >Twoje Potwierdzenie zakupu</ui:insert>
+                <h:form>
+                    <h1 style="margin-top: 20px;">Dane o produkcie</h1>
+                    <h:outputText value="Nazwa: " />
+                    <p:inputText required="true" value="#{potwierdzenie.nazwa}" disabled="true"/>
+                    <p>
+                        <h:outputText value="Cena: " style="margin-top: 2px;"/>
+                        <p:inputText required="true" value="#{potwierdzenie.cena}" disabled="true" style="border-bottom: 1px solid #AFAFAF;"/>
+                    </p>
+                    <h1 style="margin-top: 20px;">Twoje dane</h1>
+                    <p>
+                        <h:outputText value="Imię: " style="margin-top: 20px;" />
+                        <p:inputText required="true" value="#{potwierdzenie.imie}" />
+                    </p>
+                    <h:outputText value="Nazwisko: " style="margin-top: 20px;"/>
+                    <p:inputText required="true" value="#{potwierdzenie.nazwisko}" />
+                    <p>
+                        <h:outputText value="Nr-telefonu: " style="margin-top: 20px;"/>
+                        <p:inputText required="true" value="#{potwierdzenie.numer_telefonu}" />
+                    </p>
+                    <p>
+                        <h:outputText value="E-mail " style="margin-top: 20px;"/>
+                        <p:inputText required="true" value="#{potwierdzenie.e_mail}" />
+                    </p>
+                    <h:outputText value="Miasto: " style="margin-top: 20px;"/>
+                    <p:inputText required="true" value="#{potwierdzenie.miasto}"/>
+                    <p>
+                        <h:outputText value="Nr bloku: " style="margin-top: 20px;"/>
+                        <p:inputText required="true" value="#{potwierdzenie.nr_bloku}"/>
+                    </p>
+                    <h:outputText value="Nr mieszkania: " style="margin-top: 20px;"/>
+                    <p:inputText required="true" value="#{potwierdzenie.nr_mieszkania}"/>
+                    <p>
+                        <h:commandButton value="Potwierdzam" action="#{potwierdzenie.generujzamowienie(potwierdzenie.nazwa,potwierdzenie.cena,potwierdzenie.imie,potwierdzenie.nazwisko,
+                                                                       potwierdzenie.numer_telefonu,potwierdzenie.e_mail,
+                                                                       potwierdzenie.miasto,potwierdzenie.nr_bloku,potwierdzenie.nr_mieszkania)}">
+                        </h:commandButton>
+                    </p>
+                </h:form>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

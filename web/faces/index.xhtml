@@ -55,7 +55,8 @@
                         <h:outputText value="#{kosz.data}" />
                     </p:column>
                     <p:column headerText="Potwierdz" width="5%">
-                        <p:commandButton icon="ui-icon-check" ></p:commandButton>
+                        <h:commandButton value="+" action="#{potwierdzenie.potwierdz(kosz.nazwa,kosz.cena)}">
+                        </h:commandButton>
                     </p:column>
                     <p:column headerText="Anuluj" width="5%">
                         <p:commandButton icon="ui-icon-close" ></p:commandButton>
